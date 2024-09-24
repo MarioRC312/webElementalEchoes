@@ -1,0 +1,185 @@
+/********************* Resetear márgenes y paddings *********************/ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/********************* Estilos para la pagina completa *********************/
+body {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    background-color: #111;
+    line-height: 1.6;
+}
+
+/********************* Estilos para el header *********************/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+#logo img {
+    width: 3rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Courier New', monospace; 
+}
+
+nav ul li a:hover {
+    background-color: #444;
+}
+
+/********************* Seccioon de protagonistas en grid *********************/
+#protagonistas_section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 10rem 2rem 4rem 2rem; /* Espacio para el header */
+    margin-bottom: 5em;
+}
+
+/********************** Estilos para cada protagonista **********************/
+.protagonista {
+    perspective: 1000px;
+    width: 100%; /* Ajuste para que se adapte al grid */
+    height: 30rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.protagonista:hover {
+    transform: scale(1.1);
+}
+
+.protagonista_deFrente, .protagonista_deEspaldas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.6s ease;
+}
+
+.protagonista_deFrente {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.protagonista_deFrente img {
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.protagonista_deFrente p {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.protagonista_deEspaldas {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+.protagonista.flip .protagonista_deFrente {
+    transform: rotateY(180deg);
+}
+
+.protagonista.flip .protagonista_deEspaldas {
+    transform: rotateY(0);
+}
+
+/********************** footer **********************/
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #000;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    
+}
+
+/********************** Media Queries para móviles **********************/
+@media (max-width: 768px) {
+    /* Ajuste del grid para mostrar una columna en móviles */
+    #protagonistas_section {
+        grid-template-columns: 1fr; /* Una columna para móviles */
+        gap: 1.5rem; /* Espacio más pequeño entre las imágenes */
+    }
+
+    /* Ajustar tamaño del header y logo */
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    #logo img {
+        width: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    /* Ajuste del tamaño de los protagonistas */
+    .protagonista {
+        height: 25rem; /* Ajuste para mantener una altura fija */
+    }
+
+    .protagonista_deFrente img {
+        height: 75%; /* Ajuste para evitar que se colapsen */
+    }
+
+    .protagonista_deFrente p {
+        font-size: 1rem; /* Ajusta el tamaño de la fuente */
+    }
+
+    .protagonista_deEspaldas {
+        padding: 0.5rem;
+    }
+
+    footer {
+        padding: 1rem;
+        height: auto;
+    }
+}

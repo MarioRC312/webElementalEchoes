@@ -1,0 +1,169 @@
+/********************* Resetear margenes y paddings *********************/ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*overflow: hidden;*/
+}
+
+/************ Estilo para la pagina completa ************/
+body {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    background-color: #111;
+    line-height: 1.6;
+    height: 100vh;
+    overflow: hidden; /* Evitar scroll en la pagina */
+}
+
+/************ header ************/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10vh; /* Ocupa el 10% de la altura de la finestra */
+    z-index: 1000;
+}
+
+#logo img {
+    width: 4rem; /* Se ajusta mejor a tamaños responsves */
+}
+
+/************* Menu de navegacion *************/
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+ 
+nav ul li {
+    margin-left: 2rem; /* Espacio entre los botones de nav */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+}
+
+/************* seccion del fondo *************/
+.backgrounSection {
+    height: 80vh; /* El fondo ocupara el 80% de la finestra */
+    background-image: url('../img/imagen_fondo_inicio.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-top: 10vh; /* Dejar espacio para el header */
+    overflow: hidden;
+}
+
+.cubrir {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 5rem;
+    left: 2rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.cubrir h1 {
+    font-size: 3rem; /* Ajuste para el tamaño del titulo */
+}
+
+/********************** footer **********************/
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #000;
+    position: fixed;
+    width: 100%;
+    height: 10vh; /* El footer ocupa el 10% de la ventana */
+    bottom: 0;
+}
+
+/* opacazion para el titulo */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.backgrounSection {
+    animation: fadeIn 2s ease-in-out;
+}
+
+nav ul li a {
+    font-family: 'Courier New', monospace;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+
+
+/******************* Media Queries para moviles *******************/
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        height: auto;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    nav ul li a {
+        font-size: 1.5rem; /* Aumentar el tamaño de los enlaces en móviles */
+        padding: 1rem 2rem; /* Más espacio alrededor del texto */
+    }
+
+    #logo img {
+        width: 3rem;
+    }
+
+    .backgrounSection {
+        height: auto; /* Deja que se ajuste según el contenido */
+        min-height: 70vh; /* Asegura que no desaparezca */
+    }
+
+    .cubrir {
+        bottom: 2rem;
+        left: 1rem;
+        padding: 1rem;
+    }
+
+    .cubrir h1 {
+        font-size: 2rem;
+    }
+
+    footer {
+        padding: 1rem;
+        height: auto;
+    }
+}
